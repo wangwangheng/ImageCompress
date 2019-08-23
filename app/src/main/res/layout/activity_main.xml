@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/etInputPath"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:textColor="#FF1B1B1B"
+            android:hint="请输入输入目录"
+            android:text="/mnt/sdcard/DCIM/Camera"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+        <EditText
+            android:id="@+id/etOutputPath"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:textColor="#FF1B1B1B"
+            android:hint="请输入输出目录"
+            android:text="/mnt/sdcard/DCIM/Camera-2019"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/cbDeleteSource"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="删除源文件"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/btnExecute"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="开始压缩"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#FF969696"
+        android:text="就绪"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>
