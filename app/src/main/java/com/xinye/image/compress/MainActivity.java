@@ -15,6 +15,7 @@ import com.zxy.tiny.callback.FileCallback;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function2;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         final EditText inputEditText = findViewById(R.id.etInputPath);
         final EditText outputEditText = findViewById(R.id.etOutputPath);
         final CheckBox checkBox = findViewById(R.id.cbDeleteSource);
+
+        outputEditText.setText("/mnt/sdcard/DCIM/Camera-" + getDateString());
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,9 +101,6 @@ public class MainActivity extends AppCompatActivity {
         options.outfile = outFile.getAbsolutePath();
 
         TextView tv = statusTextView;
-        if(tv != null){
-            tv.setText("开始压缩(" + (index + 1) + "/" + list.length + ")：" + inputFile.getAbsolutePath());
-        }
         Tiny.getInstance().source(inputFile.getAbsoluteFile()).asFile().withOptions(options).compress(new FileCallback() {
             @Override
             public void callback(final boolean isSuccess, String outfile, Throwable t) {
@@ -152,6 +152,25 @@ public class MainActivity extends AppCompatActivity {
                 return null;
             }
         });
+    }
+
+    private String getDateString(){
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String monthString = String.valueOf(month);
+        if(month < 10){
+            monthString = "0" + month;
+        }
+
+        String dayString = String.valueOf(day);
+        if(day < 10){
+            dayString = "0" + dayString;
+        }
+
+        return year + monthString + dayString;
     }
 
 }
