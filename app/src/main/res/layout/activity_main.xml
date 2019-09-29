@@ -1,62 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity">
-    <android.support.design.widget.TextInputLayout
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/etInputPath"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".MainActivity">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etInputPath"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:hint="请输入输入目录"
+                android:singleLine="true"
+                android:text="/mnt/sdcard/DCIM/Camera"
+                android:textColor="#FF1B1B1B"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/etOutputPath"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:hint="请输入输出目录"
+                android:singleLine="true"
+                android:text="/mnt/sdcard/DCIM/Camera-2019"
+                android:textColor="#FF1B1B1B"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/cbDeleteSource"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:checked="true"
+            android:text="删除源文件" />
+
+        <CheckBox
+            android:id="@+id/cbRenameFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:checked="true"
+            android:text="修改文件后缀" />
+
+        <Button
+            android:id="@+id/btnExecute"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:singleLine="true"
-            android:textSize="14sp"
-            android:textColor="#FF1B1B1B"
-            android:hint="请输入输入目录"
-            android:text="/mnt/sdcard/DCIM/Camera"/>
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginTop="8dp"
+            android:text="开始压缩"
+            android:textSize="14sp" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp">
-        <EditText
-            android:id="@+id/etOutputPath"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:singleLine="true"
-            android:textSize="14sp"
-            android:textColor="#FF1B1B1B"
-            android:hint="请输入输出目录"
-            android:text="/mnt/sdcard/DCIM/Camera-2019"/>
-    </android.support.design.widget.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
 
-    <CheckBox
-        android:id="@+id/cbDeleteSource"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="删除源文件"
-        android:layout_marginTop="8dp"/>
+            <EditText
+                android:id="@+id/etOutputReplyPath"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:hint="请输入输出目录"
+                android:singleLine="true"
+                android:text="/mnt/sdcard/DCIM/Camera-2019"
+                android:textColor="#FF1B1B1B"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:id="@+id/btnExecute"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:text="开始压缩"
-        android:textSize="14sp"
-        android:layout_marginTop="8dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
 
-    <TextView
-        android:id="@+id/tvStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="#FF969696"
-        android:text="就绪"
-        android:layout_marginTop="8dp"/>
+            <Button
+                android:id="@+id/btnReplySetToOutputDir"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="设置为压缩输出目录"
+                android:textSize="14sp" />
+            <android.support.v4.widget.Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnReply"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="恢复文件后缀"
+                android:textSize="14sp" />
+        </LinearLayout>
 
-</LinearLayout>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:text="就绪"
+            android:background="#FF000000"
+            android:textColor="#FFFFFFFF"
+            android:textSize="14sp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/etZipPath"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:hint="请输入要添加到Zip的文件夹路径"
+                android:singleLine="true"
+                android:text="/mnt/sdcard/DCIM/Camera-2019"
+                android:textColor="#FF1B1B1B"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btnZipSetToOutputDir"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="设置为压缩输出目录"
+                android:textSize="14sp" />
+            <android.support.v4.widget.Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnZip"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="开始添加到Zip"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
